@@ -97,9 +97,10 @@ public class MapFragment extends Fragment {
         if (!dialogShown) {
             mapFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             mapFragmentWelcomeDialog.setTitle(getString(R.string.map_fragment_name));
+            mapFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_map);
             mapFragmentWelcomeDialog.setMessage("В разделе \"Карта\" Вы сможете увидеть все доступные экопункты в Вашем городе. Коснувшись любого флажка, " +
                             "Вы сможете просмотреть подробную информацию о нем, а также проложить к нему маршрут. Кроме того, не забудьте открыть приложение, " +
-                    "когда решите посетить один из них. Как только Вы окажетесь в зоне флажка, Вам будут начисленны специальные очки, " +
+                    "когда решите посетить один из них. Как только Вы окажетесь в зоне флажка, Вам будут начислены специальные очки, " +
                     "которые будут отображаться в Вашем профиле.");
             mapFragmentWelcomeDialog.setNegativeButton("Понятно", new DialogInterface.OnClickListener() {
                 @Override

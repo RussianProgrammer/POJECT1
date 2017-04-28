@@ -25,6 +25,7 @@ public class EventsFragment extends Fragment {
         if (!dialogShown) {
             eventsFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             eventsFragmentWelcomeDialog.setTitle(getString(R.string.events_fragment_name));
+            eventsFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_events);
             eventsFragmentWelcomeDialog.setMessage("В разделе \"События\" Вы сможете наблюдать за появлением новых экологических фестивалей и других подобных мероприятний, проходящих в Вашем городе. " +
                             "Эти мероприятия будут также отмечены специальным флажком на карте, а за явку на такое событие Вы получите увеличенную награду."
                     );

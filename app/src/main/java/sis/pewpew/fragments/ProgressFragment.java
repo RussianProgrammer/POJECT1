@@ -25,6 +25,7 @@ public class ProgressFragment extends Fragment {
         if (!dialogShown) {
             progressFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             progressFragmentWelcomeDialog.setTitle(getString(R.string.progress_fragment_name));
+            progressFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_progress);
             progressFragmentWelcomeDialog.setMessage("В разделе \"Прогресс\" показаны результаты совместной работы всего сообщества. " +
                     "Также здесь показан и Ваш личный вклад в спасение планеты.");
             progressFragmentWelcomeDialog.setNegativeButton("Понятно", new DialogInterface.OnClickListener() {

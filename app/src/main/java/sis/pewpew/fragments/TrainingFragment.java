@@ -8,12 +8,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import sis.pewpew.MainActivity;
 import sis.pewpew.R;
 
 public class TrainingFragment extends Fragment {
-
-    private AlertDialog.Builder trainingFragmentWelcomeDialog;
 
 
     @Override
@@ -25,8 +24,9 @@ public class TrainingFragment extends Fragment {
         boolean dialogShown = settings.getBoolean("dialogShown", false);
 
         if (!dialogShown) {
-            trainingFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder trainingFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             trainingFragmentWelcomeDialog.setTitle(getString(R.string.training_fragment_name));
+            trainingFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_training);
             trainingFragmentWelcomeDialog.setMessage("В разделе \"Обучение\" Вы узнаете, какие существуют способы защиты окружающей среды. " +
                     "Кроме того, Вы научитесь многим простым вещам, которые сделают Вашу помощь планете еще полезней.");
             trainingFragmentWelcomeDialog.setNegativeButton("Понятно", new DialogInterface.OnClickListener() {
