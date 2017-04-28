@@ -4,13 +4,18 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +29,8 @@ import sis.pewpew.utils.NetworkStatusInspectorActivity;
 public class SettingsFragment extends PreferenceFragment {
 
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private static final String TAG = "LogInStatus";
+    private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private AlertDialog.Builder signOutDialog;
     private AlertDialog.Builder deleteAccountDialog;
@@ -83,8 +90,8 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
 
-        final Preference myPref1 = findPreference("delete_account_button");
-        myPref1.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        final Preference preference1 = findPreference("delete_account_button");
+        preference1.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 deleteAccountDialog.show();
@@ -92,14 +99,52 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
 
-        final Preference myPref = findPreference("sign_out_button");
-        myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        final Preference preference2 = findPreference("sign_out_button");
+        preference2.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
                 signOutDialog.show();
                 return false;
             }
         });
+
+        final Preference preference3 = findPreference("verify_account_button");
+        preference3.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                if (user.isEmailVerified()) {
+                    Toast.makeText(getActivity(), "Ваш аккаунт уже подтвержден", Toast.LENGTH_SHORT).show();
+                } else {
+                    sendEmailVerification();
+                }
+                return false;
+            }
+        });
+
+        final CheckBoxPreference checkBoxPreference = (CheckBoxPreference)findPreference("account_verified_checkbox");
+        if (user.isEmailVerified()) {
+            checkBoxPreference.setChecked(true);
+        }
         return rootView;
+    }
+
+    private void sendEmailVerification() {
+        final FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
+        user.sendEmailVerification()
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getActivity(), "Email подтверждения отправлен на " + user.getEmail(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.e(TAG, "sendEmailVerification", task.getException());
+                            Toast.makeText(getActivity(),
+                                    R.string.email_sending_error_message,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private void logOut() {

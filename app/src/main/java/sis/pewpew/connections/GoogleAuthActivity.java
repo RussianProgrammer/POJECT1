@@ -31,7 +31,7 @@ public class GoogleAuthActivity extends ProgressDialogActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener {
 
-    private static final String TAG = "GoogleActivity";
+    private static final String TAG = "LogInStatus";
     private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -85,27 +85,6 @@ public class GoogleAuthActivity extends ProgressDialogActivity implements
         }
     }
 
-    private void sendEmailVerification() {
-        final FirebaseUser user = mAuth.getCurrentUser();
-        assert user != null;
-        user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        if (task.isSuccessful()) {
-                            Toast.makeText(GoogleAuthActivity.this, "Email подтверждения отправлен на " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(GoogleAuthActivity.this,
-                                    R.string.email_sending_error_message,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -148,9 +127,6 @@ public class GoogleAuthActivity extends ProgressDialogActivity implements
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            if (!user.isEmailVerified()) {
-                sendEmailVerification();
-            }
             mDatabase.child("users").child(user.getUid()).child("name").setValue(user.getDisplayName());
             mDatabase.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
             Intent intent = new Intent(GoogleAuthActivity.this, MainActivity.class);

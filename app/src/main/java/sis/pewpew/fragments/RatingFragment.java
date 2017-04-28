@@ -19,7 +19,6 @@ public class RatingFragment extends Fragment {
 
     private ArrayList<String> list = new ArrayList<>();
     private ArrayAdapter<String> adapter;
-    private AlertDialog.Builder ratingFragmentWelcomeDialog;
     //private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
@@ -31,7 +30,7 @@ public class RatingFragment extends Fragment {
         boolean dialogShown = settings.getBoolean("dialogShown", false);
 
         if (!dialogShown) {
-            ratingFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder ratingFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             ratingFragmentWelcomeDialog.setTitle(getString(R.string.rating_fragment_name));
             ratingFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_rating);
             ratingFragmentWelcomeDialog.setMessage("В разделе \"Рейтинг\" показана таблица лидеров по очкам, заработанным в приложении," +
