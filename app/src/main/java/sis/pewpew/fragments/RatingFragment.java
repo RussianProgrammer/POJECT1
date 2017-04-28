@@ -1,18 +1,14 @@
 package sis.pewpew.fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -23,16 +19,39 @@ public class RatingFragment extends Fragment {
 
     private ArrayList<String> list = new ArrayList<>();
     private ArrayAdapter<String> adapter;
+    private AlertDialog.Builder ratingFragmentWelcomeDialog;
     //private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        SharedPreferences settings = getActivity().getSharedPreferences("RATING", 0);
+        boolean dialogShown = settings.getBoolean("dialogShown", false);
+
+        if (!dialogShown) {
+            ratingFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
+            ratingFragmentWelcomeDialog.setTitle(getString(R.string.rating_fragment_name));
+            ratingFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_rating);
+            ratingFragmentWelcomeDialog.setMessage("В разделе \"Рейтинг\" показана таблица лидеров по очкам, заработанным в приложении," +
+                    " среди членов сообщества. Вы также можете найти свою позицию в рейтинге, используя фильтр.");
+            ratingFragmentWelcomeDialog.setNegativeButton("Понятно", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            ratingFragmentWelcomeDialog.show();
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("dialogShown", true);
+            editor.apply();
+        }
         View rootView = inflater.inflate(R.layout.fragment_rating, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.rating_fragment_name));
 
-        ListView listView = (ListView) rootView.findViewById(R.id.listview);
+        /*ListView listView = (ListView) rootView.findViewById(R.id.listview);
         adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, list);
         listView.setAdapter(adapter);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -62,8 +81,8 @@ public class RatingFragment extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+
+        });*/
         return rootView;
     }
 

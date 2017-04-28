@@ -24,6 +24,7 @@ import sis.pewpew.fragments.EventsFragment;
 import sis.pewpew.fragments.FeedbackFragment;
 import sis.pewpew.fragments.GratitudeFragment;
 import sis.pewpew.fragments.MapFragment;
+import sis.pewpew.fragments.NewsFragment;
 import sis.pewpew.fragments.ProgressFragment;
 import sis.pewpew.fragments.RatingFragment;
 import sis.pewpew.fragments.SettingsFragment;
@@ -44,6 +45,7 @@ public class MainActivity extends NetIntegrationActivity
     EventsFragment eventsFragment;
     ProgressFragment progressFragment;
     RatingFragment ratingFragment;
+    NewsFragment newsFragment;
     SettingsFragment settingsFragment;
     ShareFragment shareFragment;
     TrainingFragment trainingFragment;
@@ -82,6 +84,7 @@ public class MainActivity extends NetIntegrationActivity
         mapFragment = new MapFragment();
         progressFragment = new ProgressFragment();
         ratingFragment = new RatingFragment();
+        newsFragment = new NewsFragment();
         settingsFragment = new SettingsFragment();
         shareFragment = new ShareFragment();
         trainingFragment = new TrainingFragment();
@@ -146,6 +149,8 @@ public class MainActivity extends NetIntegrationActivity
             fragmentTransaction.replace(R.id.container, achievementsFragment);
         } else if (id == R.id.nav_events) {
             fragmentTransaction.replace(R.id.container, eventsFragment);
+        } else if (id == R.id.nav_news) {
+            fragmentTransaction.replace(R.id.container, newsFragment);
         } else if (id == R.id.nav_training) {
             fragmentTransaction.replace(R.id.container, trainingFragment);
         } else if (id == R.id.nav_settings) {
