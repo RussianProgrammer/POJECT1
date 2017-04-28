@@ -1,6 +1,9 @@
 package sis.pewpew.fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -32,6 +35,7 @@ public class MapFragment extends Fragment {
     private LatLng mCurrentLocationLatLng;
     private LatLng mDefaultLocation = new LatLng(55.755826, 37.6173);
     private MainActivity mainActivity = new MainActivity();
+    private AlertDialog.Builder mapFragmentWelcomeDialog;
 
 
     LocationListener mLocationListener = new LocationListener() {
@@ -86,6 +90,30 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        SharedPreferences settings = getActivity().getSharedPreferences("MAP", 0);
+        boolean dialogShown = settings.getBoolean("dialogShown", false);
+
+        if (!dialogShown) {
+            mapFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
+            mapFragmentWelcomeDialog.setTitle(getString(R.string.map_fragment_name));
+            mapFragmentWelcomeDialog.setMessage("В разделе \"Карта\" Вы сможете увидеть все доступные экопункты в Вашем городе. Коснувшись любого флажка, " +
+                            "Вы сможете просмотреть подробную информацию о нем, а также проложить к нему маршрут. Кроме того, не забудьте открыть приложение, " +
+                    "когда решите посетить один из них. Как только Вы окажетесь в зоне флажка, Вам будут начисленны специальные очки, " +
+                    "которые будут отображаться в Вашем профиле.");
+            mapFragmentWelcomeDialog.setNegativeButton("Понятно", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            mapFragmentWelcomeDialog.show();
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("dialogShown", true);
+            editor.apply();
+        }
+
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.map_fragment_name));
 

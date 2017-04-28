@@ -20,13 +20,13 @@ public class AchievementsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        SharedPreferences settings = getActivity().getSharedPreferences("ROOT", 0);
+        SharedPreferences settings = getActivity().getSharedPreferences("ACHIEVEMENTS", 0);
         boolean dialogShown = settings.getBoolean("dialogShown", false);
 
         if (!dialogShown) {
             achievementsFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             achievementsFragmentWelcomeDialog.setTitle(getString(R.string.achievements_fragment_name));
-            achievementsFragmentWelcomeDialog.setMessage("В разделе Достижения Вы сможете наблюдать за своим личным прогрессом и текущем рангом, " +
+            achievementsFragmentWelcomeDialog.setMessage("В разделе \"Достижения\" Вы сможете наблюдать за своим личным прогрессом и текущем рангом, " +
                     "а также исследовать полученные достижения.");
             achievementsFragmentWelcomeDialog.setNegativeButton("Понятно", new DialogInterface.OnClickListener() {
                 @Override
