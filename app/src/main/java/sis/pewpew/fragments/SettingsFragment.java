@@ -28,9 +28,9 @@ import sis.pewpew.utils.NetworkStatusInspectorActivity;
 
 public class SettingsFragment extends PreferenceFragment {
 
+    public FirebaseAuth mAuth;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private static final String TAG = "LogInStatus";
-    private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private AlertDialog.Builder signOutDialog;
     private AlertDialog.Builder deleteAccountDialog;
@@ -67,7 +67,6 @@ public class SettingsFragment extends PreferenceFragment {
                 dialogInterface.cancel();
             }
         });
-
 
         signOutDialog = new AlertDialog.Builder(getActivity());
         signOutDialog.setTitle("Выход");
@@ -119,7 +118,7 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
 
-        final CheckBoxPreference checkBoxPreference = (CheckBoxPreference)findPreference("account_verified_checkbox");
+        final CheckBoxPreference checkBoxPreference = (CheckBoxPreference) findPreference("account_verified_checkbox");
         if (user.isEmailVerified()) {
             checkBoxPreference.setChecked(true);
         }

@@ -7,7 +7,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class MarkerLibrary {
     GoogleMap mMap;
 
-    LatLng[] points = new LatLng[1000];
+    private LatLng[] points = new LatLng[1000];
     {
         points[0] = new LatLng(56, 89);
         points[1] = new LatLng(76, 89);

@@ -5,21 +5,19 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-
-import java.util.ArrayList;
 
 import sis.pewpew.MainActivity;
 import sis.pewpew.R;
 
 public class RatingFragment extends Fragment {
 
-    private ArrayList<String> list = new ArrayList<>();
-    private ArrayAdapter<String> adapter;
-    //private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,40 +48,22 @@ public class RatingFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_rating, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.rating_fragment_name));
 
-        /*ListView listView = (ListView) rootView.findViewById(R.id.listview);
-        adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, list);
-        listView.setAdapter(adapter);
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String value = dataSnapshot.child("rating").getValue(String.class);
-                list.add(value);
-                adapter.notifyDataSetChanged();
-            }
+        /*mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rating_list);
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+        mRecyclerView.setHasFixedSize(true);
 
-            }
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+        // specify an adapter (see also next example)
+        mAdapter = new RecyclerViewAdapter(myDataset);
+        mRecyclerView.setAdapter(mAdapter);*/
 
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-
-        });*/
         return rootView;
     }
+
+
 
     @Override
     public void onDetach() {

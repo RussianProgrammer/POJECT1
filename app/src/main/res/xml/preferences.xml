@@ -62,9 +62,18 @@
 
         <ListPreference
             android:defaultValue="1"
+            android:dialogTitle="Выберите Ваш город:"
+            android:entries="@array/listArrayCity"
+            android:entryValues="@array/listValuesCity"
+            android:key="city_selector"
+            android:summary="Укажите Ваш город проживания для корректной работы карты."
+            android:title="Город" />
+
+        <ListPreference
+            android:defaultValue="1"
             android:dialogTitle="Выберите пол:"
-            android:entries="@array/listArray"
-            android:entryValues="@array/listValues"
+            android:entries="@array/listArrayGender"
+            android:entryValues="@array/listValuesGender"
             android:key="gender_selector"
             android:summary="Укажите Ваш пол для отображения соответствующего фото профиля."
             android:title="Пол" />

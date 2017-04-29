@@ -35,7 +35,6 @@ import sis.pewpew.utils.NetIntegrationActivity;
 public class MainActivity extends NetIntegrationActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private final int PERMISSION_REQUEST_CODE = 5;
     public boolean mLocationPermissionGranted;
 
     AchievementsFragment achievementsFragment;
@@ -72,6 +71,7 @@ public class MainActivity extends NetIntegrationActivity
             mLocationPermissionGranted = true;
 
         } else {
+            int PERMISSION_REQUEST_CODE = 5;
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSION_REQUEST_CODE);
