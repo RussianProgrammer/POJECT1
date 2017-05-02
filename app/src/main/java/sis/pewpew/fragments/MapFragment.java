@@ -97,6 +97,7 @@ public class MapFragment extends Fragment {
         if (!dialogShown) {
             mapFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             mapFragmentWelcomeDialog.setTitle(getString(R.string.map_fragment_name));
+            mapFragmentWelcomeDialog.setCancelable(false);
             mapFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_map);
             mapFragmentWelcomeDialog.setMessage("В разделе \"Карта\" Вы сможете увидеть все доступные экопункты в Вашем городе. Коснувшись любого флажка, " +
                             "Вы сможете просмотреть подробную информацию о нем, а также проложить к нему маршрут. Кроме того, не забудьте открыть приложение, " +
@@ -176,7 +177,6 @@ public class MapFragment extends Fragment {
                         public void onProviderDisabled(String s) {
                         }*/
                 }
-                ;
             }
         });
         return rootView;

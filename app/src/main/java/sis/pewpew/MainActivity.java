@@ -1,6 +1,9 @@
 package sis.pewpew;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -59,6 +62,30 @@ public class MainActivity extends NetIntegrationActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SharedPreferences settings = this.getSharedPreferences("DEMO", 0);
+        boolean dialogShown = settings.getBoolean("dialogShown", false);
+
+        if (!dialogShown) {
+            AlertDialog.Builder demoVersionAttentionDialog = new AlertDialog.Builder(this);
+            demoVersionAttentionDialog.setTitle("Демоверсия");
+            demoVersionAttentionDialog.setCancelable(false);
+            demoVersionAttentionDialog.setIcon(R.drawable.ic_error_demo);
+            demoVersionAttentionDialog.setMessage("Пожалуйста, обратите внимание на то, " +
+                    "что данная версия приложения не является окончательной. " +
+                    "Некоторые функции используют демонстрационные сэмплы, вместо показа актуальной информации.");
+            demoVersionAttentionDialog.setNegativeButton("Нет проблем", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            demoVersionAttentionDialog.show();
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("dialogShown", true);
+            editor.apply();
+        }
+
         if (user == null) {
             Intent intent = new Intent(MainActivity.this, GoogleAuthActivity.class);
             startActivity(intent);
@@ -112,16 +139,13 @@ public class MainActivity extends NetIntegrationActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import sis.pewpew.MainActivity;
 import sis.pewpew.R;
 
@@ -24,6 +25,7 @@ public class NewsFragment extends Fragment {
         if (!dialogShown) {
             AlertDialog.Builder newsFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             newsFragmentWelcomeDialog.setTitle(getString(R.string.news_fragment_name));
+            newsFragmentWelcomeDialog.setCancelable(false);
             newsFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_news);
             newsFragmentWelcomeDialog.setMessage("В разделе \"Новости\" Вы можете следить за последними обновлениями в приложении. " +
                     "Кроме того, если Вы разрешили приложению отправлять Вам уведомления, " +

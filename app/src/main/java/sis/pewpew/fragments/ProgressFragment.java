@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import sis.pewpew.MainActivity;
 import sis.pewpew.R;
 
@@ -25,6 +26,7 @@ public class ProgressFragment extends Fragment {
         if (!dialogShown) {
             progressFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             progressFragmentWelcomeDialog.setTitle(getString(R.string.progress_fragment_name));
+            progressFragmentWelcomeDialog.setCancelable(false);
             progressFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_progress);
             progressFragmentWelcomeDialog.setMessage("В разделе \"Прогресс\" показаны результаты совместной работы всего сообщества. " +
                     "Также здесь показан и Ваш личный вклад в спасение планеты.");

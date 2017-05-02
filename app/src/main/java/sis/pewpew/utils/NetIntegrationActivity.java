@@ -7,7 +7,9 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -53,7 +55,22 @@ public class NetIntegrationActivity extends AppCompatActivity {
                         TextView navUserEmail = (TextView) headerView.findViewById(R.id.user_email);
                         navUserEmail.setText("Адрес электронной почты");
                     }
-                    // User is signed in
+                    if (user.getPhotoUrl() != null) {
+                        ImageView navUserPhoto = (ImageView) headerView.findViewById(R.id.user_icon);
+                        navUserPhoto.setImageURI(user.getPhotoUrl());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No photo URI", Toast.LENGTH_SHORT).show();
+                    }
+
+                    /*SharedPreferences sharedConfig = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    ImageView genderIcon = (ImageView) findViewById(R.id.user_icon);
+                    String gender = sharedConfig.getString("gender_selector", "2");
+                    if (gender.equals("1")) {
+                        genderIcon.setImageResource(R.drawable.male_icon);
+                    } else if (gender.equals("2")) {
+                        genderIcon.setImageResource(R.drawable.female_icon);
+                    }*/
+
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out

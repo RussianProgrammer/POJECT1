@@ -26,6 +26,7 @@ public class TrainingFragment extends Fragment {
         if (!dialogShown) {
             AlertDialog.Builder trainingFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             trainingFragmentWelcomeDialog.setTitle(getString(R.string.training_fragment_name));
+            trainingFragmentWelcomeDialog.setCancelable(false);
             trainingFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_training);
             trainingFragmentWelcomeDialog.setMessage("В разделе \"Обучение\" Вы узнаете, какие существуют способы защиты окружающей среды. " +
                     "Кроме того, Вы научитесь многим простым вещам, которые сделают Вашу помощь планете еще полезней.");

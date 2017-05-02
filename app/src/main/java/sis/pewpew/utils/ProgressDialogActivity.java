@@ -14,6 +14,7 @@ public class ProgressDialogActivity extends AppCompatActivity {
     public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setTitle(getString(R.string.progress_dialog_title));
             mProgressDialog.setMessage(getString(R.string.progress_dialog_message));
             mProgressDialog.setIndeterminate(true);
         }

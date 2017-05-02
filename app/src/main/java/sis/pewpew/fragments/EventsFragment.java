@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import sis.pewpew.MainActivity;
 import sis.pewpew.R;
-import sis.pewpew.utils.RecyclerViewAdapter;
+import sis.pewpew.utils.EventsRecyclerViewAdapter;
 
 public class EventsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         SharedPreferences settings = getActivity().getSharedPreferences("EVENTS", 0);
         boolean dialogShown = settings.getBoolean("dialogShown", false);
 
         if (!dialogShown) {
             AlertDialog.Builder eventsFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             eventsFragmentWelcomeDialog.setTitle(getString(R.string.events_fragment_name));
+            eventsFragmentWelcomeDialog.setCancelable(false);
             eventsFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_events);
             eventsFragmentWelcomeDialog.setMessage("В разделе \"События\" Вы сможете наблюдать за появлением новых экологических фестивалей и других подобных мероприятний, проходящих в Вашем городе. " +
-                            "Эти мероприятия будут также отмечены специальным флажком на карте, а за явку на такое событие Вы получите увеличенную награду."
-                    );
+                    "Эти мероприятия будут также отмечены специальным флажком на карте, а за явку на такое событие Вы получите увеличенную награду."
+            );
             eventsFragmentWelcomeDialog.setNegativeButton("Понятно", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -51,8 +51,7 @@ public class EventsFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.events_recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new RecyclerViewAdapter();
-        //Under the question the thing above
+        RecyclerView.Adapter adapter = new EventsRecyclerViewAdapter();
         recyclerView.setAdapter(adapter);
 
         return rootView;

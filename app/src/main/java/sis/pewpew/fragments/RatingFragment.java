@@ -30,6 +30,7 @@ public class RatingFragment extends Fragment {
         if (!dialogShown) {
             AlertDialog.Builder ratingFragmentWelcomeDialog = new AlertDialog.Builder(getActivity());
             ratingFragmentWelcomeDialog.setTitle(getString(R.string.rating_fragment_name));
+            ratingFragmentWelcomeDialog.setCancelable(false);
             ratingFragmentWelcomeDialog.setIcon(R.drawable.ic_menu_rating);
             ratingFragmentWelcomeDialog.setMessage("В разделе \"Рейтинг\" показана таблица лидеров по очкам, заработанным в приложении," +
                     " среди членов сообщества. Вы также можете найти свою позицию в рейтинге, используя фильтр.");
@@ -57,7 +58,7 @@ public class RatingFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerViewAdapter(myDataset);
+        mAdapter = new EventsRecyclerViewAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);*/
 
         return rootView;

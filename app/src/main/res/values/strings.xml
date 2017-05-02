@@ -29,4 +29,6 @@
     <string name="title_activity_maps">Map</string>
     <string name="grant_access_button_text">Предоставить доступ</string>
     <string name="news_fragment_name">Новости</string>
+    <string name="events_card_image">events card image</string>
+    <string name="progress_dialog_title">Ищем Ваш аккаунт…</string>
 </resources>
