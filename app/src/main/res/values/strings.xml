@@ -22,13 +22,16 @@
     <string name="share_fragment_name">Поделиться</string>
     <string name="feedback_fragment_name">Отправить отзыв</string>
     <string name="gratitude_fragment_name">Особая благодарность</string>
-    <string name="progress_dialog_message">Подождите…</string>
-    <string name="email_sending_error_message">Ошибка отправки email подтверждения</string>
-    <string name="authentication_error_message">Ошибка аутентификации</string>
+    <string name="progress_dialog_message">Секундочку…</string>
+    <string name="email_sending_error_message">Увы, но у нас закончилась бумага для писем. Приходите позже</string>
+    <string name="authentication_error_message">Хм… К сожалению, нам не удалось отыскать Ваш профиль</string>
     <string name="google_play_services_error_message">Произошла ошибка сервисов Google Play</string>
     <string name="title_activity_maps">Map</string>
-    <string name="grant_access_button_text">Предоставить доступ</string>
+    <string name="grant_access_button_text">Начнем</string>
     <string name="news_fragment_name">Новости</string>
     <string name="events_card_image">events card image</string>
     <string name="progress_dialog_title">Ищем Ваш аккаунт…</string>
+    <string name="description">description</string>
+    <string name="achieves_points_loading_text">Подсчитываем Ваши очки…</string>
+    <string name="profile_fragment_name">Профиль</string>
 </resources>

@@ -10,17 +10,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 import sis.pewpew.MainActivity;
 import sis.pewpew.R;
+import sis.pewpew.utils.AchievesRecyclerViewAdapter;
 
 public class AchievementsFragment extends Fragment {
 
     public FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private DatabaseReference mDatabase;
     private RecyclerView mRecyclerView;
 
     @Override
@@ -50,19 +52,14 @@ public class AchievementsFragment extends Fragment {
             editor.apply();
         }
 
-        View rootView = inflater.inflate(R.layout.fragment_achievements, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_achievements, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.achievements_fragment_name));
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.achieves_list);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 7));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        RecyclerView.Adapter adapter = new AchievesRecyclerViewAdapter();
+        mRecyclerView.setAdapter(adapter);
 
-        if (user != null && user.getDisplayName() != null) {
-            TextView username = (TextView) rootView.findViewById(R.id.achieves_username);
-            username.setText(user.getDisplayName());
-        } else {
-            TextView username = (TextView) rootView.findViewById(R.id.achieves_username);
-            username.setText("Имя пользователя");
-        }
         return rootView;
     }
 

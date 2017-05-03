@@ -1,47 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Strange things">
-
-        <CheckBoxPreference
-            android:key="checkbox_preference"
-            android:summary="Using this piece of shit you can do whatever you want"
-            android:title="Set account activated" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="Account management">
-
-        <EditTextPreference
-            android:dialogTitle="IDK really"
-            android:key="edittext_preference"
-            android:summary="stuff"
-            android:title="stuff" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="Design management">
-
-        <!-- This PreferenceScreen tag serves as a screen break (similar to page break
-             in word processing). Like for other preference types, we assign a key
-             here so it is able to save and restore its instance state. -->
-
-
-        <PreferenceScreen
-            android:summary="Ha-ha!"
-            android:title="Try to catch me">
-
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="http://www.android.com" />
-
-        </PreferenceScreen>
-
-    </PreferenceCategory>
-
     <PreferenceCategory android:title="Уведомления">
 
         <PreferenceScreen android:title="Лицензионное соглашение">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.android.com" />
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="Политика конфиденциальности">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="http://www.android.com" />
@@ -69,15 +37,6 @@
             android:summary="Укажите Ваш город проживания для корректной работы карты."
             android:title="Город" />
 
-        <ListPreference
-            android:defaultValue="1"
-            android:dialogTitle="Выберите пол:"
-            android:entries="@array/listArrayGender"
-            android:entryValues="@array/listValuesGender"
-            android:key="gender_selector"
-            android:summary="Укажите Ваш пол для отображения соответствующего фото профиля."
-            android:title="Пол" />
-
         <!-- The visual style of a child is defined by this styled theme attribute. -->
 
     </PreferenceCategory>
@@ -95,10 +54,19 @@
                 android:selectable="false"
                 android:summary="Проверка подлинности и актуальности Вашего аккаунта. Верификация аккаунта проводится через электронную почту."
                 android:title="Подтвержденный аккаунт" />
+
             <Preference
                 android:key="verify_account_button"
                 android:summary="Письмо с уникальной ссылкой верификации аккаунта будет отправлено на Ваш адрес электронной почты."
                 android:title="Подтвердить аккаунт" />
+
+            <PreferenceCategory android:title="Помощь">
+
+                <Preference
+                    android:key="verify_account_support_button"
+                    android:title="Я не подтверждал(-а) свой аккаунт" />
+            </PreferenceCategory>
+
 
         </PreferenceScreen>
 

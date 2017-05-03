@@ -7,9 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,12 +52,6 @@ public class NetIntegrationActivity extends AppCompatActivity {
                     } else {
                         TextView navUserEmail = (TextView) headerView.findViewById(R.id.user_email);
                         navUserEmail.setText("Адрес электронной почты");
-                    }
-                    if (user.getPhotoUrl() != null) {
-                        ImageView navUserPhoto = (ImageView) headerView.findViewById(R.id.user_icon);
-                        navUserPhoto.setImageURI(user.getPhotoUrl());
-                    } else {
-                        Toast.makeText(getApplicationContext(), "No photo URI", Toast.LENGTH_SHORT).show();
                     }
 
                     /*SharedPreferences sharedConfig = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

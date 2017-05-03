@@ -1,0 +1,150 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sis.pewpew.fragments.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/achieves_user_icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/description"
+                app:srcCompat="@drawable/profile_icon" />
+
+            <TextView
+                android:id="@+id/achieves_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_user_icon"
+                android:layout_centerHorizontal="true"
+                android:maxLines="1"
+                android:paddingBottom="15dp"
+                android:textColor="#222"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/achieves_main_info_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_username"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="15dp"
+                android:text="Общая информация:"
+                android:textColor="#656"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/achieves_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_main_info_call"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="@string/achieves_points_loading_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/achieves_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_points"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="Смотрим на Ваши достижения…"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/achieves_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_summary"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="Ищем ранг в списках…"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/achieves_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_rank"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="15dp"
+                android:text="Проверяем пометку…"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/achieves_saved_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_status"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="15dp"
+                android:text="Спасено:"
+                android:textColor="#656"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/achieves_saved_trees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_saved_call"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="Считаем спасенные деревья…"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/achieves_saved_animals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_saved_trees"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="Считаем спасенных животных…"
+                android:textSize="20sp" />
+
+
+
+            <TextView
+                android:id="@+id/achieves_saved_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/achieves_saved_animals"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="20dp"
+                android:text="Считаем спасенных людей…"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/demo_qr"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/achieves_saved_people"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="15dp"
+                app:srcCompat="@drawable/demo_qr" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

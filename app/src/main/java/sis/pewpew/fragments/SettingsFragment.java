@@ -25,7 +25,6 @@ import sis.pewpew.MainActivity;
 import sis.pewpew.R;
 import sis.pewpew.utils.NetworkStatusInspectorActivity;
 
-
 public class SettingsFragment extends PreferenceFragment {
 
     public FirebaseAuth mAuth;
@@ -34,6 +33,7 @@ public class SettingsFragment extends PreferenceFragment {
     private DatabaseReference mDatabase;
     private AlertDialog.Builder signOutDialog;
     private AlertDialog.Builder deleteAccountDialog;
+    private AlertDialog.Builder verifyAccountSupport;
     private NetworkStatusInspectorActivity inspector = new NetworkStatusInspectorActivity();
 
     @Override
@@ -52,13 +52,9 @@ public class SettingsFragment extends PreferenceFragment {
         deleteAccountDialog.setPositiveButton("Продолжить", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (inspector.isConnected) {
                     mDatabase.child("users").child(user.getUid()).removeValue();
                     FirebaseAuth.getInstance().signOut();
                     logOut();
-                } else {
-                    Toast.makeText(getActivity(), "Пожалуйста, проверьте подключение к Интернету", Toast.LENGTH_SHORT).show();
-                }
             }
         });
         deleteAccountDialog.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
@@ -74,12 +70,8 @@ public class SettingsFragment extends PreferenceFragment {
         signOutDialog.setPositiveButton("Выйти", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (inspector.isConnected) {
                     FirebaseAuth.getInstance().signOut();
                     logOut();
-                } else {
-                    Toast.makeText(getActivity(), "Пожалуйста, проверьте подключение к Интернету", Toast.LENGTH_SHORT).show();
-                }
             }
         });
         signOutDialog.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
@@ -88,6 +80,19 @@ public class SettingsFragment extends PreferenceFragment {
                 dialogInterface.cancel();
             }
         });
+
+        verifyAccountSupport = new AlertDialog.Builder(getActivity());
+        verifyAccountSupport.setTitle("Аккаунт уже был подтвержден");
+        verifyAccountSupport.setMessage("Дело в том, что при использовании учетной записи Google, мы подтверждаем Ваш аккаунт автоматически. " +
+                "Если же у Вас возникли подозрения, что кто-то мог получить доступ к Вашему аккаунту, пожалуйста, незамедлительно свяжитесь с нами.");
+        verifyAccountSupport.setNegativeButton("Ясно", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+
 
         final Preference preference1 = findPreference("delete_account_button");
         preference1.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -114,6 +119,15 @@ public class SettingsFragment extends PreferenceFragment {
                 } else {
                     sendEmailVerification();
                 }
+                return false;
+            }
+        });
+
+        final Preference preference4 = findPreference("verify_account_support_button");
+        preference4.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                verifyAccountSupport.show();
                 return false;
             }
         });

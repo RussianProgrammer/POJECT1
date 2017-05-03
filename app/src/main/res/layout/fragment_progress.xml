@@ -2,8 +2,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sis.pewpew.fragments.ProgressFragment">
+    tools:context="sis.pewpew.fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/progress_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="Общими силами мы собрали"
+                android:textColor="#424242"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_call"
+                android:layout_centerHorizontal="true"
+                android:text="2945600"
+                android:textColor="#222"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/progress_points_name_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_points"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="30dp"
+                android:text="очков"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_saved_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_points_name_call"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="А это означает, что мы спасли"
+                android:textColor="#424242"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_saved_trees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_saved_call"
+                android:layout_centerHorizontal="true"
+                android:text="45600"
+                android:textColor="#222"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/progress_saved_trees_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_saved_trees"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="деревьев,"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_saved_animals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_saved_trees_call"
+                android:layout_centerHorizontal="true"
+                android:text="20700"
+                android:textColor="#222"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/progress_saved_animals_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_saved_animals"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="животных,"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_saved_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_saved_animals_call"
+                android:layout_centerHorizontal="true"
+                android:text="9900"
+                android:textColor="#222"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/progress_saved_people_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_saved_people"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="30dp"
+                android:text="человек"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_recycled_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_saved_people_call"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="И утилизировали"
+                android:textColor="#424242"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_recycled_kg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_recycled_call"
+                android:layout_centerHorizontal="true"
+                android:text="29456"
+                android:textColor="#222"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/progress_recycled_kg_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_recycled_kg"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="30dp"
+                android:text="киллограмм мусора,"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_summary_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_recycled_kg_call"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="5dp"
+                android:text="Тем самым выполнив"
+                android:textColor="#424242"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/progress_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress_summary_call"
+                android:layout_centerHorizontal="true"
+                android:text="26%"
+                android:textColor="#222"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/progress_summary_call_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_summary"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="20dp"
+                android:text="годового плана"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+    </ScrollView>
+
 
 </FrameLayout>

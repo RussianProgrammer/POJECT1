@@ -5,15 +5,26 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import sis.pewpew.MainActivity;
 import sis.pewpew.R;
 
+import static com.google.android.gms.internal.zzt.TAG;
+
 public class ProgressFragment extends Fragment {
 
+    private DatabaseReference mDatabase;
     private AlertDialog.Builder progressFragmentWelcomeDialog;
 
     @Override
@@ -43,8 +54,27 @@ public class ProgressFragment extends Fragment {
             editor.apply();
         }
         // Inflate the layout for this fragment
+        final View rootView = inflater.inflate(R.layout.fragment_progress, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.progress_fragment_name));
-        return inflater.inflate(R.layout.fragment_progress, container, false);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        ValueEventListener pointsListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long pointsFromDatabase = (long) dataSnapshot.child("progress").child("points").getValue();
+                TextView points = (TextView) rootView.findViewById(R.id.progress_points);
+                points.setText("" + (int) pointsFromDatabase);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        mDatabase.addValueEventListener(pointsListener);
+
+        return rootView;
     }
 
     @Override
