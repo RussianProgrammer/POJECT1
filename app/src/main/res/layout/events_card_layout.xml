@@ -7,7 +7,7 @@
     android:layout_margin="10dp"
     android:clickable="true"
     android:foreground="?selectableItemBackground"
-    card_view:cardBackgroundColor="#FFFFFF"
+    card_view:cardBackgroundColor="#B71C1C"
     card_view:cardCornerRadius="10dp"
     card_view:cardElevation="5dp"
     card_view:contentPadding="0dp">
@@ -33,8 +33,8 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
-            android:textColor="#222"
-            android:textSize="30sp"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
         <TextView
@@ -47,8 +47,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="5dp"
-            android:textColor="#676"
-            android:textSize="14sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/event_address_call"
@@ -60,7 +60,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:text="Адрес: "
-            android:textColor="#222"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -71,6 +71,7 @@
             android:layout_toEndOf="@id/event_address_call"
             android:layout_toRightOf="@+id/event_address_call"
             android:maxLines="1"
+            android:textColor="#FFFFFF"
             android:paddingBottom="5dp"
             android:paddingLeft="15dp"
             android:paddingTop="10dp"
@@ -86,7 +87,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:text="Сроки проведения: "
-            android:textColor="#222"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -97,6 +98,7 @@
             android:layout_toEndOf="@id/event_date_call"
             android:layout_toRightOf="@+id/event_date_call"
             android:maxLines="1"
+            android:textColor="#FFFFFF"
             android:paddingBottom="5dp"
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
@@ -112,7 +114,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:text="Сайт: "
-            android:textColor="#222"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -124,6 +126,7 @@
             android:layout_toRightOf="@+id/event_url_call"
             android:autoLink="web"
             android:maxLines="1"
+            android:textColor="#FFFFFF"
             android:paddingBottom="5dp"
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
@@ -139,7 +142,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:text="Призовой фонд: "
-            android:textColor="#222"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -150,6 +153,7 @@
             android:layout_toEndOf="@id/event_prize_fund_call"
             android:layout_toRightOf="@+id/event_prize_fund_call"
             android:maxLines="1"
+            android:textColor="#FFFFFF"
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
@@ -163,6 +167,7 @@
             android:layout_toEndOf="@id/event_prize_fund"
             android:layout_toRightOf="@+id/event_prize_fund"
             android:maxLines="1"
+            android:textColor="#FFFFFF"
             android:paddingBottom="10dp"
             android:paddingTop="5dp"
             android:text=" очков"
