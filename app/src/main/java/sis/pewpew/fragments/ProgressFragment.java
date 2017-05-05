@@ -58,13 +58,18 @@ public class ProgressFragment extends Fragment {
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.progress_fragment_name));
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.keepSynced(true);
 
         ValueEventListener pointsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                long usersCountFromDatabase = dataSnapshot.child("users").getChildrenCount();
                 long pointsFromDatabase = (long) dataSnapshot.child("progress").child("points").getValue();
                 TextView points = (TextView) rootView.findViewById(R.id.progress_points);
+                TextView usersCount = (TextView) rootView.findViewById(R.id.progress_users_count);
+                usersCount.setText("" + usersCountFromDatabase);
                 points.setText("" + (int) pointsFromDatabase);
+
             }
 
             @Override
