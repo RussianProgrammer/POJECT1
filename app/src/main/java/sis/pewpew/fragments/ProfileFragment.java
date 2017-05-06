@@ -197,7 +197,7 @@ public class ProfileFragment extends Fragment {
         profileMainCardDialog.setTitle("Карточка профиля");
         profileMainCardDialog.setIcon(R.drawable.profile_icon);
         profileMainCardDialog.setMessage("Это Ваша карточка профиля, на которой мы аккуратно " +
-                "выгравировали Ваше имя и фамилию. Возможно, у Вас мог возникнуть вопрос, " +
+                "выгравировали Ваше имя и фамилию. У Вас мог возникнуть вопрос, " +
                 "что означает пометка под именем. Отвечаем: она показывает, какую роль Вы выполняете в нашем сообществе. " +
                 "Вы можете быть как обычным пользователем, так и модератором. " +
                 "По всем вопросам касательно пометки Вы всегда можете обратиться к нам на нашем сайте.");
@@ -263,7 +263,7 @@ public class ProfileFragment extends Fragment {
         profileAchievesCardDialog.setTitle("Карточка достижений");
         profileAchievesCardDialog.setIcon(R.drawable.profile_achieves_icon);
         profileAchievesCardDialog.setMessage("Здесь мы посчитали все собранные Вами достижения. Как Вы уже наверняка знаете, " +
-                "всего их 15, но со временем их количество будет расти. За каждые 200 очков Вы получаете одно новое. " +
+                "всего их 25, но со временем их количество будет расти. За каждые 200 очков Вы получаете одно новое. " +
                 "Кроме того Вы всегда можете поделиться ими.");
         profileAchievesCardDialog.setNegativeButton("Закрыть", new DialogInterface.OnClickListener() {
             @Override

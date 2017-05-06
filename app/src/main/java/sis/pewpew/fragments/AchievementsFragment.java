@@ -5,7 +5,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +56,7 @@ public class AchievementsFragment extends Fragment {
         ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.achievements_fragment_name));
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.achieves_list);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         RecyclerView.Adapter adapter = new AchievesRecyclerViewAdapter();
         mRecyclerView.setAdapter(adapter);
 

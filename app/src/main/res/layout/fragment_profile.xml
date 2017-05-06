@@ -23,7 +23,7 @@
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 card_view:cardBackgroundColor="#FFFFFF"
-                card_view:cardCornerRadius="10dp"
+                card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:contentPadding="0dp">
 
@@ -77,7 +77,7 @@
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 card_view:cardBackgroundColor="#456"
-                card_view:cardCornerRadius="10dp"
+                card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:contentPadding="5dp">
 
@@ -133,7 +133,7 @@
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 card_view:cardBackgroundColor="#298"
-                card_view:cardCornerRadius="10dp"
+                card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:contentPadding="5dp">
 
@@ -189,7 +189,7 @@
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 card_view:cardBackgroundColor="#987"
-                card_view:cardCornerRadius="10dp"
+                card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:contentPadding="5dp">
 
@@ -245,7 +245,7 @@
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 card_view:cardBackgroundColor="#490"
-                card_view:cardCornerRadius="10dp"
+                card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:contentPadding="5dp">
 
@@ -301,7 +301,7 @@
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 card_view:cardBackgroundColor="#756"
-                card_view:cardCornerRadius="10dp"
+                card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:contentPadding="5dp">
 
@@ -357,7 +357,7 @@
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 card_view:cardBackgroundColor="#999"
-                card_view:cardCornerRadius="10dp"
+                card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
                 card_view:contentPadding="5dp">
 

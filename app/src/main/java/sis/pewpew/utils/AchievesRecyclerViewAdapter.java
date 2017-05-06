@@ -8,11 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import sis.pewpew.R;
+import sis.pewpew.fragments.ProfileFragment;
 
 public class AchievesRecyclerViewAdapter extends RecyclerView.Adapter<AchievesRecyclerViewAdapter.ViewHolder> {
 
-    private String[] titles = {"Кабачок 1",
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    private ProfileFragment profile = new ProfileFragment();
+
+
+    private String[] titles = {"Папайя",
             "Кабачок 2",
             "Кабачок 3",
             "Кабачок 4",
@@ -29,14 +37,14 @@ public class AchievesRecyclerViewAdapter extends RecyclerView.Adapter<AchievesRe
             "Кабачок 15",
     };
 
-    private String[] details = {"ВузЭкоФест - это некоммерческий просветительский проект, направленный на развитие экологичного образа жизни. Ключевое мероприятие проекта - ежегодный молодежный фестиваль ВузЭкоФест, который в 2017 году состоится уже третий раз. С 17 по 30 апреля в 50+ вузах Москвы, Санкт-Петербурга и других крупных городов России пройдут экологические мероприятия, организованные силами студентов, преподавателей и сотрудников этих вузов.",
+    private String[] locations = {"ВузЭкоФест - это некоммерческий просветительский проект, направленный на развитие экологичного образа жизни. Ключевое мероприятие проекта - ежегодный молодежный фестиваль ВузЭкоФест, который в 2017 году состоится уже третий раз. С 17 по 30 апреля в 50+ вузах Москвы, Санкт-Петербурга и других крупных городов России пройдут экологические мероприятия, организованные силами студентов, преподавателей и сотрудников этих вузов.",
             "Подробное описание фестиваля 2, где рассказывается о его особенностях и как там классно в принципе.",
             "Подробное описание фестиваля 3, где рассказывается о его особенностях и как там классно в принципе.",
             "Подробное описание фестиваля 4, где рассказывается о его особенностях и как там классно в принципе.",
             "Подробное описание фестиваля 5, где рассказывается о его особенностях и как там классно в принципе.",
     };
 
-    private int[] images = {R.drawable.test_achieve_icon_1,
+    private int[] images = {R.drawable.profile_icon,
             R.drawable.test_achieve_icon_1,
             R.drawable.test_achieve_icon_1,
             R.drawable.test_achieve_icon_1,
@@ -53,7 +61,7 @@ public class AchievesRecyclerViewAdapter extends RecyclerView.Adapter<AchievesRe
             R.drawable.test_achieve_icon_1
     };
 
-    private String[] dates = {"с 17 по 30 апреля",
+    private String[] details = {"с 17 по 30 апреля",
             "12 апреля - 14 июня",
             "12 апреля - 14 июня",
             "12 апреля - 14 июня",
@@ -65,11 +73,16 @@ public class AchievesRecyclerViewAdapter extends RecyclerView.Adapter<AchievesRe
         ImageView achieveImage;
         TextView achieveTitle;
         TextView achieveDetail;
-        TextView achieveDate;
+        TextView achieveLocation;
+        TextView achieveProgress;
 
         ViewHolder(View itemView) {
             super(itemView);
-            achieveImage = (ImageView) itemView.findViewById(R.id.achieve_icon);
+            achieveImage = (ImageView) itemView.findViewById(R.id.achieves_icon);
+            achieveTitle = (TextView) itemView.findViewById(R.id.achieves_name);
+            achieveLocation = (TextView) itemView.findViewById(R.id.achieves_location);
+            achieveProgress = (TextView) itemView.findViewById(R.id.achieves_progress);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -3,9 +3,6 @@
     package="sis.pewpew">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -47,7 +44,12 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
 
-        <activity android:name=".utils.DatabaseExplorerActivity"></activity>
+        <activity android:name=".utils.DatabaseExplorerActivity" />
+
+        <service
+            android:name=".utils.DelayService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>
